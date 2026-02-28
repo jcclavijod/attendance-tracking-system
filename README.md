@@ -209,7 +209,7 @@ pip install -r requirements.txt
 
 ## ▶️ Ejecutar la aplicación:
 
-Usando archivo de entrada:
+Usando archivo de entrada a eleccion:
 ```bash
 python cli.py input.txt
 ```
@@ -219,6 +219,11 @@ Usando entrada estándar:
 cat input.txt | python cli.py
 ```
 
+Se incluye un archivo `input.txt` con el ejemplo descrito en el enunciado para facilitar la ejecución rápida del sistema:
+
+```bash
+python cli.py examples/input.txt
+```
 ---
 
 ## 🧪 Running Tests
