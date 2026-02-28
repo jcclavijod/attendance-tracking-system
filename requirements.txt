@@ -1,0 +1,3 @@
+# Requerido: Python >= 3.14
+# Dependencias externas necesarias para ejecutar tests
+pytest==9.0.2
