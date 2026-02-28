@@ -9,38 +9,43 @@ Este proyecto implementa un sistema de registro y análisis de asistencia de est
 1. **Registro de estudiante**  
    Formato: `Student <Nombre>`  
    Ejemplo:  
+```bash
         Student Marco
         Student David
         Student Fran
-
+```
 2. **Registro de presencia**  
     Formato: `Presence <Nombre> <Día> <HoraInicio> <HoraFin> <Sala>`  
     Donde:
-        - Día: número del 1 al 7 representando el día de la semana.
-        - HoraInicio y HoraFin: formato `HH:MM` en 24 horas.
-        - Sala: código de la sala donde se registró la presencia.  
+- Día: número del 1 al 7 representando el día de la semana.
+- HoraInicio y HoraFin: formato `HH:MM` en 24 horas.
+- Sala: código de la sala donde se registró la presencia.  
     Ejemplo:
+```bash
         Presence Marco 1 09:02 10:17 R100
         Presence Marco 3 10:58 12:05 R205
         Presence David 5 14:02 15:46 F505
+```
 
 **Reglas de negocio importantes**:
-    - Se descartan presencias menores a 5 minutos automáticamente.
-    - No se permiten presencias fuera del rango horario válido (inicio < fin).
-    - Estudiantes no registrados que tengan presencias generan un warning y su evento se ignora.
-    - Se calcula la duración total de asistencia y los días distintos de asistencia por estudiante.
+- Se descartan presencias menores a 5 minutos automáticamente.
+- No se permiten presencias fuera del rango horario válido (inicio < fin).
+- Estudiantes no registrados que tengan presencias generan un warning y su evento se ignora.
+- Se calcula la duración total de asistencia y los días distintos de asistencia por estudiante.
 
 ### Ejemplo de salida esperada
 
-    El sistema genera un reporte con la siguiente información:
-        - Nombre del estudiante.
-        - Total de minutos de asistencia (sumando todas las presencias válidas).
-        - Cantidad de días distintos que asistió.
+El sistema genera un reporte con la siguiente información:
+- Nombre del estudiante.
+- Total de minutos de asistencia (sumando todas las presencias válidas).
+- Cantidad de días distintos que asistió.
 
     Ejemplo de salida:
+```bash
         Marco: 142 minutes in 2 days
         David: 104 minutes in 1 day
         Fran: 0 minutes
+```
 ---
 
 ## 🏗 Arquitectura y Decisiones de Diseño
@@ -57,7 +62,7 @@ Esta separación asegura que cambios en la entrada, nuevas reglas de negocio o a
 
 
 ### Estructura de Carpetas y Capas
-
+```bash
 attendance/
 ├── application/
 │   ├── attendance_application.py
@@ -80,7 +85,7 @@ tests/
 cli.py
 requirements.txt
 readme.md
-
+```
 ### 1️⃣ Capa de Dominio (Domain Layer)
 
 **Propósito:** Contiene la lógica de negocio central, independiente de cómo se recibe o presenta la información.  
@@ -232,24 +237,12 @@ Generación de reportes y ordenamiento (AttendanceReportGenerator)
 
 ## 🔧 Requirements
 
-- Python 3.10+
+- Python 3.14+
 - pytest (for running tests)
 
 Install dependencies:
 
 pip install -r requirements.txt
-
-
----
-
-## 🚀 Possible Extensions
-
-- Support for different input formats (JSON, CSV)
-- Persistence layer (database)
-- CLI arguments for sorting options
-- Web API wrapper
-
-The current architecture supports these extensions without modifying the domain layer.
 
 ---
 
