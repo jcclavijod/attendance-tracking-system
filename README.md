@@ -82,6 +82,9 @@ tests/
 ├── test_attendance_service.py
 └── test_attendance_report_generator.py
 
+examples/
+├── input.txt
+
 cli.py
 requirements.txt
 readme.md
